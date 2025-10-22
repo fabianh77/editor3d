@@ -1,0 +1,57 @@
+Perfecto, te explico cómo ejecutar este sistema en tu máquina local:
+
+📥 Paso 1: Descargar el Proyecto de Replit
+Tienes varias opciones:
+
+Exportar como ZIP (la más fácil):
+
+En Replit, ve al menú de archivos
+Busca la opción de exportar/descargar proyecto
+Se descargará un archivo ZIP con todo el código
+Usar Git (recomendado para actualizaciones):
+
+En la terminal de Replit o en tu máquina local:
+git clone <url-del-repositorio-replit>
+💻 Paso 2: Preparar tu Máquina Local
+Necesitas tener instalado:
+
+Node.js (versión 18 o superior)
+
+Descarga desde: https://nodejs.org/
+Verifica con: node --version
+PostgreSQL (si quieres usar la base de datos)
+
+Descarga desde: https://www.postgresql.org/download/
+O usa Docker: docker run -p 5432:5432 -e POSTGRES_PASSWORD=password postgres
+⚙️ Paso 3: Instalar Dependencias
+Abre una terminal en la carpeta del proyecto y ejecuta:
+
+npm install
+🔐 Paso 4: Configurar Variables de Entorno
+Crea un archivo .env en la raíz del proyecto con:
+
+DATABASE_URL=postgresql://usuario:password@localhost:5432/mixamo_db
+SESSION_SECRET=tu-secreto-aleatorio-aqui
+NODE_ENV=development
+Si NO quieres usar base de datos, el sistema ya está configurado para usar almacenamiento en memoria.
+
+🚀 Paso 5: Ejecutar el Sistema
+npm run dev
+La aplicación se iniciará en: http://localhost:5000
+
+📂 Estructura de lo que se ejecuta:
+Backend (Express): Puerto 5000
+Frontend (Vite): Integrado en el mismo puerto
+Los archivos subidos se guardan en /uploads
+⚠️ Notas Importantes:
+Archivos Subidos: Los modelos 3D que subas se guardarán en la carpeta uploads/ localmente
+
+Sin Base de Datos: El sistema funciona con datos en memoria, así que al reiniciar perderás los cambios. Si quieres persistencia, configura PostgreSQL.
+
+Puerto 5000: Asegúrate de que el puerto 5000 esté disponible. Si no, puedes cambiarlo en server/index.ts
+
+Modo Desarrollo: El comando npm run dev incluye hot-reload, así que los cambios se reflejan automáticamente.
+
+🛑 Para Detener el Sistema:
+Presiona Ctrl + C en la terminal
+
